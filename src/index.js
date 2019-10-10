@@ -47,6 +47,7 @@ class Game extends React.Component {
     this.state = {
       history: [{
         squares: Array(9).fill(null),
+        simbol: null,
         pos: null,
       }],
       stepNumber: 0,
@@ -65,6 +66,7 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([{ //concat() method doesn't mutate the original array (push() method does it)
         squares: squares,
+        simbol: squares[i],
         pos: i,
       }]),
       stepNumber: history.length,
@@ -88,7 +90,7 @@ class Game extends React.Component {
       const pos = whichCellIs(array[move].pos);
 
       const desc = move ?
-        'Go to move #' + move + ' (' + pos +')':
+        'Go to move #' + move + ' (' + array[move].simbol +' in ' + pos +')':
         'Go to game start';
       return (
         <li key={move}>
